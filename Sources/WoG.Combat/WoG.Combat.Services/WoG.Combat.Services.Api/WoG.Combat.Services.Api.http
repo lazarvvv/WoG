@@ -1,0 +1,6 @@
+@WoG.Combat.Services.Api_HostAddress = http://localhost:5227
+
+GET {{WoG.Combat.Services.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
