@@ -7,6 +7,8 @@ using StackExchange.Redis;
 using System.Text;
 using WoG.Combat.Service.Api;
 using WoG.Combat.Services.Api.Data;
+using WoG.Combat.Services.Api.Repositories;
+using WoG.Combat.Services.Api.Repositories.Interfaces;
 using WoG.Combat.Services.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +23,8 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddSingleton<CombatService>();
 builder.Services.AddHostedService(provider => provider.GetRequiredService<CombatService>());
+
+builder.Services.AddScoped<ICombatRepository, CombatRepository>();
 
 builder.Services.AddHostedService<DuelCleanupService>();
 

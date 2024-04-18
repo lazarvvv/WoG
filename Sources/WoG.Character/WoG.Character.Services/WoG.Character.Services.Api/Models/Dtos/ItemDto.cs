@@ -5,7 +5,7 @@ namespace WoG.Characters.Services.Api.Models.Dtos
 {
     public class ItemDto
     {
-        //private string fullName = string.Empty;
+        private string fullName = string.Empty;
 
         public Guid Id { get; set; }
         public required Guid OwnerId { get; set; }
@@ -16,45 +16,46 @@ namespace WoG.Characters.Services.Api.Models.Dtos
         public int BonusIntelligence { get; set; }
         public int BonusFaith { get; set; }
 
-        //public string FullName { 
-        //    get
-        //    {
-        //        if(!string.IsNullOrEmpty(this.fullName))
-        //        {
-        //            return this.fullName;
-        //        }
-                
-        //        var (Stat, Suffix) = (BonusFaith, ItemSuffixes.FaithSuffix);
+        public string FullName
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(this.fullName))
+                {
+                    return this.fullName;
+                }
 
-        //        if (Stat < this.BonusStamina)
-        //        {
-        //            Stat = this.BonusStamina;
-        //            Suffix = ItemSuffixes.StaminaSuffix;
-        //        }
+                var (Stat, Suffix) = (BonusFaith, ItemSuffixes.FaithSuffix);
 
-        //        if (Stat < this.BonusStrength)
-        //        {
-        //            Stat = this.BonusStrength;
-        //            Suffix = ItemSuffixes.StrengthSuffix;
-        //        }
+                if (Stat < this.BonusStamina)
+                {
+                    Stat = this.BonusStamina;
+                    Suffix = ItemSuffixes.StaminaSuffix;
+                }
 
-        //        if (Stat < this.BonusAgility)
-        //        {
-        //            Stat = this.BonusAgility;
-        //            Suffix = ItemSuffixes.AgilitySuffix;
-        //        }
+                if (Stat < this.BonusStrength)
+                {
+                    Stat = this.BonusStrength;
+                    Suffix = ItemSuffixes.StrengthSuffix;
+                }
 
-        //        if (Stat < this.BonusIntelligence)
-        //        {
-        //            Suffix = ItemSuffixes.IntelligenceSuffix;
-        //        }
+                if (Stat < this.BonusAgility)
+                {
+                    Stat = this.BonusAgility;
+                    Suffix = ItemSuffixes.AgilitySuffix;
+                }
 
-        //        this.fullName = $"{this.BaseItem.Name} {Suffix}";
+                if (Stat < this.BonusIntelligence)
+                {
+                    Suffix = ItemSuffixes.IntelligenceSuffix;
+                }
 
-        //        return this.fullName;
-        //    }
+                this.fullName = $"{this.BaseItem.Name} {Suffix}";
 
-        //    private set => this.fullName = value;
-        //}
+                return this.fullName;
+            }
+
+            private set => this.fullName = value;
+        }
     }
 }
